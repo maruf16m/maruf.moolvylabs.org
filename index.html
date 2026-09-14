@@ -1,301 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breakdown of Dario Amodei’s essay</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #1a1a1a;
-            --secondary-text: #666666;
-            --accent-color: #000000;
-            --border-color: #eaeaea;
-            --font-sans: 'Inter', sans-serif;
-            --font-serif: 'Lora', serif;
-            --transition-speed: 0.3s;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --secondary-text: #a0a0a0;
-            --accent-color: #ffffff;
-            --border-color: #333333;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        h1 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        button {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-family: var(--font-sans);
-            transition: all 0.2s ease;
-        }
-
-        button:hover {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border-color: var(--text-color);
-        }
-
-        article {
-            margin-bottom: 5rem;
-        }
-
-        .post-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .post-number {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .post-title {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .post-image-container {
-            width: 100%;
-            height: auto;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: var(--border-color);
-        }
-
-        .post-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        .post-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            color: var(--text-color);
-        }
-
-        .post-content strong {
-            font-weight: 600;
-        }
-
-        footer {
-            margin-top: 6rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            color: var(--secondary-text);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 1.2rem; }
-            .post-title { font-size: 1.5rem; }
-            .container { padding: 1.5rem 1rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakdown of Dario Amodei’s essay</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+--bg-color: #ffffff;
+--text-color: #1a1a1a;
+--secondary-text: #666666;
+--accent-color: #000000;
+--border-color: #eaeaea;
+--font-sans: 'Inter', sans-serif;
+--font-serif: 'Lora', serif;
+--transition-speed: 0.3s;
+}
+[data-theme="dark"] {
+--bg-color: #121212;
+--text-color: #e0e0e0;
+--secondary-text: #a0a0a0;
+--accent-color: #ffffff;
+--border-color: #333333;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+background-color: var(--bg-color);
+color: var(--text-color);
+font-family: var(--font-sans);
+line-height: 1.6;
+transition: background-color var(--transition-speed), color var(--transition-speed);
+-webkit-font-smoothing: antialiased;
+}
+.container {
+max-width: 720px;
+margin: 0 auto;
+padding: 2rem 1.5rem;
+}
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 4rem;
+padding-bottom: 1rem;
+border-bottom: 1px solid var(--border-color);
+}
+h1 {
+font-family: var(--font-serif);
+font-size: 1.5rem;
+font-weight: 600;
+letter-spacing: -0.02em;
+}
+.controls {
+display: flex;
+gap: 1rem;
+align-items: center;
+}
+button {
+background: none;
+border: 1px solid var(--border-color);
+color: var(--text-color);
+padding: 0.4rem 0.8rem;
+border-radius: 20px;
+cursor: pointer;
+font-size: 0.85rem;
+font-family: var(--font-sans);
+transition: all 0.2s ease;
+}
+button:hover {
+background-color: var(--text-color);
+color: var(--bg-color);
+border-color: var(--text-color);
+}
+article {
+margin-bottom: 5rem;
+}
+.post-header {
+margin-bottom: 1.5rem;
+}
+.post-number {
+font-size: 0.9rem;
+color: var(--secondary-text);
+text-transform: uppercase;
+letter-spacing: 0.1em;
+margin-bottom: 0.5rem;
+display: block;
+}
+.post-title {
+font-family: var(--font-serif);
+font-size: 1.8rem;
+font-weight: 600;
+margin-bottom: 1rem;
+line-height: 1.3;
+}
+.post-image-container {
+width: 100%;
+height: auto;
+margin-bottom: 2rem;
+border-radius: 8px;
+overflow: hidden;
+background-color: var(--border-color);
+}
+.post-image {
+width: 100%;
+height: auto;
+display: block;
+object-fit: cover;
+}
+.post-content p {
+margin-bottom: 1.5rem;
+font-size: 1.05rem;
+color: var(--text-color);
+}
+.post-content strong {
+font-weight: 600;
+}
+footer {
+margin-top: 6rem;
+padding-top: 2rem;
+border-top: 1px solid var(--border-color);
+text-align: center;
+color: var(--secondary-text);
+font-size: 0.9rem;
+}
+@media (max-width: 600px) {
+h1 { font-size: 1.2rem; }
+.post-title { font-size: 1.5rem; }
+.container { padding: 1.5rem 1rem; }
+}
+</style>
 </head>
 <body>
-
 <div class="container">
-    <header>
-        <h1 id="site-title">Breakdown of Dario Amodei’s essay “We Must Pace the Frontier”</h1>
-        <div class="controls">
-            <button id="lang-btn">RU</button>
-            <button id="theme-btn">Theme</button>
-        </div>
-    </header>
-
-    <main id="blog-posts">
-    </main>
-
-    <footer>
-        <p id="author-name">Author: mamedarov maruf</p>
-    </footer>
+<header>
+<h1 id="site-title">Breakdown of Dario Amodei’s essay “We Must Pace the Frontier”</h1>
+<div class="controls">
+<button id="lang-btn">RU</button>
+<button id="theme-btn">Theme</button>
 </div>
-
+</header>
+<main id="blog-posts">
+</main>
+<footer>
+<p id="author-name">Author: mamedarov maruf</p>
+</footer>
+</div>
 <script>
-    
-    const blogData = [
-        {
-            id: 1,
-            image: "post1.jpg", 
-            en: {
-                title: "The Illusion of Control",
-                content: `
-                    <p>When AI starts writing its own code, human control becomes an illusion. We are losing the wheel.</p>
-                    <p>But this solution is deeply wrong. Locking the "wheel" inside a black box owned by three corporate giants isn't safety, it's catastrophic risk. If a closed frontier model goes rogue or develops a hidden bias, no one outside their walls will ever know until it's too late. Proprietary tech means zero public oversight.</p>
-                    <p>True alignment requires decentralization. We need open-source projects so that millions of global engineers can audit, stress-test, and hardcode real safety barriers into the weights.</p>
-                    <p><strong>Safety is built through transparency, not through monopolies.</strong></p>
-                `
-            },
-            ru: {
-                title: "Иллюзия контроля",
-                content: `
-                    <p>Когда ИИ начинает писать собственный код, человеческий контроль становится иллюзией. Мы теряем руль.</p>
-                    <p>Но это решение в корне неверно. Запирание «руля» внутри черного ящика, принадлежащего трем корпоративным гигантам — это не безопасность, а катастрофический риск. Если закрытая модель выйдет из-под контроля или проявит скрытую предвзятость, никто за пределами их стен не узнает об этом, пока не станет слишком поздно. Проприетарные технологии означают нулевой общественный надзор.</p>
-                    <p>Настоящее выравнивание целей требует децентрализации. Нам нужны проекты с открытым исходным кодом, чтобы миллионы инженеров по всему миру могли проводить аудит, стресс-тестирование и жестко прописывать реальные барьеры безопасности в весах моделей.</p>
-                    <p><strong>Безопасность строится через прозрачность, а не через монополии.</strong></p>
-                `
-            }
-        },
-        {
-            id: 2,
-            image: "post2.jpg", 
-            en: {
-                title: "Safety or Geopolitics?",
-                content: `
-                    <p>Amodei published an essay titled "We need to slow down the frontier for safety." The text contains 10 mentions of China. It does not contain 10 mentions of biosecurity risks. It does not contain 10 mentions of losing control.</p>
-                    <p>The logic is as follows: "We are worried about humanity. Therefore, we are slowing down. But only to the extent that it keeps the US ahead of China. We will not sell chips to China. We will crack down on smuggling. We will crack down on reverse engineering. We will expand this lead by 3-5 years."</p>
-                    <p>This is not about safety. It is about export controls disguised as "we are keeping AI in check." If the priority were "not to kill everyone," the logic would be simple: open audits, common standards, slowing down everyone who is developing the frontier.</p>
-                    <p>Instead, they propose to leave the controls within a "black box" of three corporations + a government that decides who can have the technology. A closed model that goes crazy behind closed doors will tell no one anything, until it's too late, or until it's no longer profitable.</p>
-                    <p>"Third-party auditors with employee access" is not public oversight. It is simply allowing "our people" access to "our things." The real argument of the essay is not "AI is dangerous." The real argument is: "AI is dangerous if it is not ours."</p>
-                    <p>The safety of humanity and containing China are different goals. When they are combined into a single text and presented as concern for people, it is no longer analysis. It is propaganda.</p>
-                `
-            },
-            ru: {
-                title: "Безопасность или геополитика?",
-                content: `
-                    <p>Амодей опубликовал эссе под названием «Нам нужно притормозить фронт ради безопасности». В тексте 10 упоминаний Китая. В нем нет 10 упоминаний рисков биобезопасности. В нем нет 10 упоминаний потери контроля.</p>
-                    <p>Логика следующая: «Мы беспокоимся о человечестве. Поэтому мы замедляемся. Но только настолько, чтобы США оставались впереди Китая. Мы не будем продавать чипы Китаю. Мы пресечем контрабанду. Мы пресечем обратную разработку. Мы расширим этот отрыв на 3-5 лет».</p>
-                    <p>Речь идет не о безопасности. Речь идет об экспортном контроле, замаскированном под «мы держим ИИ в узде». Если бы приоритетом было «не убить всех», логика была бы простой: открытый аудит, общие стандарты, замедление для всех, кто разрабатывает передовые модели.</p>
-                    <p>Вместо этого они предлагают оставить контроль внутри «черного ящика» трех корпораций плюс правительства, которое решает, кто может иметь доступ к технологиям. Закрытая модель, которая сойдет с ума за закрытыми дверями, никому ничего не скажет, пока не станет слишком поздно или пока это не перестанет быть прибыльным.</p>
-                    <p>«Сторонние аудиторы с доступом сотрудников» — это не общественный надзор. Это просто разрешение «нашим людям» получать доступ к «нашим вещам». Реальный аргумент эссе не в том, что «ИИ опасен». Реальный аргумент: «ИИ опасен, если он не наш».</p>
-                    <p>Безопасность человечества и сдерживание Китая — разные цели. Когда они объединяются в один текст и подаются как забота о людях, это уже не анализ. Это пропаганда.</p>
-                `
-            }
-        }
-    ];
-
-    let currentLang = 'en';
-    let currentTheme = 'light';
-
-    const mainContainer = document.getElementById('blog-posts');
-    const langBtn = document.getElementById('lang-btn');
-    const themeBtn = document.getElementById('theme-btn');
-    const siteTitle = document.getElementById('site-title');
-    const authorName = document.getElementById('author-name');
-    const uiTranslations = {
-        en: {
-            title: "Breakdown of Dario Amodei’s essay “We Must Pace the Frontier”",
-            author: "Author: mamedarov maruf",
-            btnLabel: "RU"
-        },
-        ru: {
-            title: "Разбор эссе Дарио Амодея «We Must Pace the Frontier»",
-            author: "Автор: mamedarov maruf",
-            btnLabel: "EN"
-        }
-    };
-
-    function renderPosts() {
-        mainContainer.innerHTML = '';
-        
-        blogData.forEach(post => {
-            const data = post[currentLang];
-            
-            const article = document.createElement('article');
-            article.innerHTML = `
-                <div class="post-header">
-                    <span class="post-number">${currentLang === 'en' ? 'Post' : 'Пост'} ${post.id}</span>
-                    <h2 class="post-title">${data.title}</h2>
-                </div>
-                <div class="post-image-container">
-                    <img src="${post.image}" alt="${data.title}" class="post-image" loading="lazy">
-                </div>
-                <div class="post-content">
-                    ${data.content}
-                </div>
-            `;
-            mainContainer.appendChild(article);
-        });
-    }
-
-    function updateUI() {
-        siteTitle.textContent = uiTranslations[currentLang].title;
-        authorName.textContent = uiTranslations[currentLang].author;
-        langBtn.textContent = uiTranslations[currentLang].btnLabel;
-
-        // Update Theme
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        renderPosts();
-    }
-
-    langBtn.addEventListener('click', () => {
-        currentLang = currentLang === 'en' ? 'ru' : 'en';
-        updateUI();
-    });
-
-    themeBtn.addEventListener('click', () => {
-        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-        updateUI();
-    });
-
-    updateUI();
-
+const blogData = [
+{
+id: 1,
+image: "post1.jpg",
+en: {
+title: "The Illusion of Control",
+content: `<p>When AI starts writing its own code, human control becomes an illusion. We are losing the wheel.</p> <p>But this solution is deeply wrong. Locking the "wheel" inside a black box owned by three corporate giants isn't safety, it's catastrophic risk. If a closed frontier model goes rogue or develops a hidden bias, no one outside their walls will ever know until it's too late. Proprietary tech means zero public oversight.</p> <p>True alignment requires decentralization. We need open-source projects so that millions of global engineers can audit, stress-test, and hardcode real safety barriers into the weights.</p> <p><strong>Safety is built through transparency, not through monopolies.</strong></p>`
+},
+ru: {
+title: "Иллюзия контроля",
+content: `<p>Когда ИИ начинает писать собственный код, человеческий контроль становится иллюзией. Мы теряем руль.</p> <p>Но это решение в корне неверно. Запирание «руля» внутри черного ящика, принадлежащего трем корпоративным гигантам — это не безопасность, а катастрофический риск. Если закрытая модель выйдет из-под контроля или проявит скрытую предвзятость, никто за пределами их стен не узнает об этом, пока не станет слишком поздно. Проприетарные технологии означают нулевой общественный надзор.</p> <p>Настоящее выравнивание целей требует децентрализации. Нам нужны проекты с открытым исходным кодом, чтобы миллионы инженеров по всему миру могли проводить аудит, стресс-тестирование и жестко прописывать реальные барьеры безопасности в весах моделей.</p> <p><strong>Безопасность строится через прозрачность, а не через монополии.</strong></p>`
+}
+},
+{
+id: 2,
+image: "post2.jpg",
+en: {
+title: "Safety or Geopolitics?",
+content: `<p>Amodei published an essay titled "We need to slow down the frontier for safety." The text contains 10 mentions of China. It does not contain 10 mentions of biosecurity risks. It does not contain 10 mentions of losing control.</p> <p>The logic is as follows: "We are worried about humanity. Therefore, we are slowing down. But only to the extent that it keeps the US ahead of China. We will not sell chips to China. We will crack down on smuggling. We will crack down on reverse engineering. We will expand this lead by 3-5 years."</p> <p>This is not about safety. It is about export controls disguised as "we are keeping AI in check." If the priority were "not to kill everyone," the logic would be simple: open audits, common standards, slowing down everyone who is developing the frontier.</p> <p>Instead, they propose to leave the controls within a "black box" of three corporations + a government that decides who can have the technology. A closed model that goes crazy behind closed doors will tell no one anything, until it's too late, or until it's no longer profitable.</p> <p>"Third-party auditors with employee access" is not public oversight. It is simply allowing "our people" access to "our things." The real argument of the essay is not "AI is dangerous." The real argument is: "AI is dangerous if it is not ours."</p> <p>The safety of humanity and containing China are different goals. When they are combined into a single text and presented as concern for people, it is no longer analysis. It is propaganda.</p>`
+},
+ru: {
+title: "Безопасность или геополитика?",
+content: `<p>Амодей опубликовал эссе под названием «Нам нужно притормозить фронт ради безопасности». В тексте 10 упоминаний Китая. В нем нет 10 упоминаний рисков биобезопасности. В нем нет 10 упоминаний потери контроля.</p> <p>Логика следующая: «Мы беспокоимся о человечестве. Поэтому мы замедляемся. Но только настолько, чтобы США оставались впереди Китая. Мы не будем продавать чипы Китаю. Мы пресечем контрабанду. Мы пресечем обратную разработку. Мы расширим этот отрыв на 3-5 лет».</p> <p>Речь идет не о безопасности. Речь идет об экспортном контроле, замаскированном под «мы держим ИИ в узде». Если бы приоритетом было «не убить всех», логика была бы простой: открытый аудит, общие стандарты, замедление для всех, кто разрабатывает передовые модели.</p> <p>Вместо этого они предлагают оставить контроль внутри «черного ящика» трех корпораций плюс правительства, которое решает, кто может иметь доступ к технологиям. Закрытая модель, которая сойдет с ума за закрытыми дверями, никому ничего не скажет, пока не станет слишком поздно или пока это не перестанет быть прибыльным.</p> <p>«Сторонние аудиторы с доступом сотрудников» — это не общественный надзор. Это просто разрешение «нашим людям» получать доступ к «нашим вещам». Реальный аргумент эссе не в том, что «ИИ опасен». Реальный аргумент: «ИИ опасен, если он не наш».</p> <p>Безопасность человечества и сдерживание Китая — разные цели. Когда они объединяются в один текст и подаются как забота о людях, это уже не анализ. Это пропаганда.</p>`
+}
+},
+{
+id: 3,
+image: "post3.png",
+en: {
+title: "Trump’s “No” to the Slowdown",
+content: `<p>Trump’s “no” to the slowdown is a good answer. Not because the risks aren’t real.</p> <p>But because forced corporate pacing would have choked everything — including open-source. Now open-source AI can keep breathing.</p> <p>Public models, independent audits, real decentralization still have room to grow. That’s closer to actual safety than locking the future inside three black boxes.</p> <p>I think this is the right approach. Safety through open code is far more secure. If companies truly want to solve safety, they should address it internally rather than restricting everyone else.</p>`
+},
+ru: {
+title: "«Нет» Трампа замедлению",
+content: `<p>«Нет» Трампа замедлению — это хороший ответ. Не потому, что риски нереальны.</p> <p>А потому, что принудительное корпоративное сдерживание задушило бы всё — включая открытый исходный код. Теперь open-source ИИ может продолжать дышать.</p> <p>Публичные модели, независимые аудиты, настоящая децентрализация всё ещё имеют пространство для роста. Это ближе к реальной безопасности, чем запирание будущего внутри трёх чёрных ящиков.</p> <p>Я думаю, что это правильный подход. Безопасность через открытый код намного надёжнее. Если компании действительно хотят решить проблему безопасности, им стоит решать её внутри своих компаний, а не ограничивать всех остальных.</p>`
+}
+}
+];
+let currentLang = 'en';
+let currentTheme = 'light';
+const mainContainer = document.getElementById('blog-posts');
+const langBtn = document.getElementById('lang-btn');
+const themeBtn = document.getElementById('theme-btn');
+const siteTitle = document.getElementById('site-title');
+const authorName = document.getElementById('author-name');
+const uiTranslations = {
+en: {
+title: "Breakdown of Dario Amodei’s essay “We Must Pace the Frontier”",
+author: "Author: mamedarov maruf",
+btnLabel: "RU"
+},
+ru: {
+title: "Разбор эссе Дарио Амодея «We Must Pace the Frontier»",
+author: "Автор: mamedarov maruf",
+btnLabel: "EN"
+}
+};
+function renderPosts() {
+mainContainer.innerHTML = '';
+blogData.forEach(post => {
+const data = post[currentLang];
+const article = document.createElement('article');
+article.innerHTML = `<div class="post-header"> <span class="post-number">${currentLang === 'en' ? 'Post' : 'Пост'} ${post.id}</span> <h2 class="post-title">${data.title}</h2> </div> <div class="post-image-container"> <img src="${post.image}" alt="${data.title}" class="post-image" loading="lazy"> </div> <div class="post-content"> ${data.content} </div>`;
+mainContainer.appendChild(article);
+});
+}
+function updateUI() {
+siteTitle.textContent = uiTranslations[currentLang].title;
+authorName.textContent = uiTranslations[currentLang].author;
+langBtn.textContent = uiTranslations[currentLang].btnLabel;
+document.documentElement.setAttribute('data-theme', currentTheme);
+renderPosts();
+}
+langBtn.addEventListener('click', () => {
+currentLang = currentLang === 'en' ? 'ru' : 'en';
+updateUI();
+});
+themeBtn.addEventListener('click', () => {
+currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+updateUI();
+});
+updateUI();
 </script>
-
 </body>
 </html>
